@@ -13,12 +13,16 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+
+    //This is a global middleware that executes in every single requests in application
     protected $middleware = [
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\LogQueries::class,
     ];
 
     /**
@@ -50,6 +54,8 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    //This is a route specific milldleware
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
